@@ -47,7 +47,7 @@ class DS18B20(object):
             return False
         if glob.glob(base_dir + '28*')[index] is not None:
             device_folder = glob.glob(base_dir + '28*')[index]
-            return device_folder + '/w1_slave'
+            return device_folder + '/w1_subordinate'
         else:
             return False
 

@@ -151,7 +151,7 @@ def main():
         # 读取sqlite数据库data
         cursor = c.execute("SELECT intent, slots from myhome_commands")
         for row in cursor:
-            payload = '{"intent":"%s","slots":"%s","slaveID":3,"control":1,"command_first_byte":1,"command_second_byte":2,"command_third_byte":3,"command_fourth_byte":4}' \
+            payload = '{"intent":"%s","slots":"%s","subordinateID":3,"control":1,"command_first_byte":1,"command_second_byte":2,"command_third_byte":3,"command_fourth_byte":4}' \
             %(row[0], row[1])
 
             # 判断读取到的字符串是否有变换（语音控制的输出）
@@ -250,12 +250,12 @@ def main():
         SAKS.digital_display.show(("%.2f" % temp).replace(' ','#'))
 
         # #创建表
-        # c.execute('create table myhome_nodedata (id Integer primary key autoincrement , time Text , localshortaddr Text , gateway_id Text , slaveId Text , humidity Integer , temperature Integer , light Integer , noise Integer , co2_simulation Integer , co2_binarization Integer)')
+        # c.execute('create table myhome_nodedata (id Integer primary key autoincrement , time Text , localshortaddr Text , gateway_id Text , subordinateId Text , humidity Integer , temperature Integer , light Integer , noise Integer , co2_simulation Integer , co2_binarization Integer)')
         # print ("create myhome_nodedata table success")
         # conn.commit()
 
         #写入data
-        sql = "insert into myhome_nodedata(time,localshortaddr, gateway_id,slaveId, humidity, temperature,light, noise, co2_simulation, co2_binarization)values('%s','%s','%s','%s',%f,%f,%f,%f,%f,%f)" % (0,0,0,0,63.2, temp,862.13,77.61,0.14,0.14)
+        sql = "insert into myhome_nodedata(time,localshortaddr, gateway_id,subordinateId, humidity, temperature,light, noise, co2_simulation, co2_binarization)values('%s','%s','%s','%s',%f,%f,%f,%f,%f,%f)" % (0,0,0,0,63.2, temp,862.13,77.61,0.14,0.14)
         conn.execute(sql)
         conn.commit()
         print ("Records created successfully insert into myhome_nodedata values")

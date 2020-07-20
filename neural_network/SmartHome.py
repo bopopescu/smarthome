@@ -30,7 +30,7 @@ if '2' in res:
     op = 'AC_WARM'
 
 slots = ''
-# sql = "insert into myhome_nodedata(time,localshortaddr, gateway_id,slaveId, humidity, temperature,light, noise, co2_simulation, co2_binarization)values('%s','%s','%s','%s',%f,%f,%f,%f,%f,%f)" % (time.strftime('%Y-%m-%d/%H:%M:%S'),"F5A1","0","1",50,13,0,0,0,op)
+# sql = "insert into myhome_nodedata(time,localshortaddr, gateway_id,subordinateId, humidity, temperature,light, noise, co2_simulation, co2_binarization)values('%s','%s','%s','%s',%f,%f,%f,%f,%f,%f)" % (time.strftime('%Y-%m-%d/%H:%M:%S'),"F5A1","0","1",50,13,0,0,0,op)
 c.execute("UPDATE myhome_commands SET INTENT=?,SLOTS=? where ID=1",(op,slots))
 conn.commit()
 conn.close()
